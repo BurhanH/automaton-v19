@@ -16,7 +16,8 @@ before_script:
   - echo "Do someting"
 
 script:
-  - npm test
+  - echo "Run tests"
+  # - npm test
 
 after_script:
   - cat ./appium_log.txt
