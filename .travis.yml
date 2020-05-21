@@ -1,23 +1,18 @@
-language: node_js
-node_js:
-  - "stable"
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - "stable"
+      cache:
+        directories:
+          - node_modules
 
-cache:
-  directories:
-  - node_modules
+      before_install:
+        - npm install appium
+        - npm install wd
+        - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
+         - appium &
 
-before_install:
-  - npm install appium
-  - npm install wd
-  - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
-  - appium &
 
-before_script:
-  - echo "Do someting"
-
-script:
-  - echo "Run tests"
-  # - npm test
-
-after_script:
-  - cat ./appium_log.txt
+      after_script:
+        - cat ./appium_log.txt
