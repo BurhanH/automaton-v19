@@ -7,7 +7,7 @@ cache:
   - node_modules
 
 before_install:
-  - npm install -g appium
+  - npm install appium
   - npm install wd
   - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
   - appium &
