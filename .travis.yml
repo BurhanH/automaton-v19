@@ -1,23 +1,17 @@
-matrix:
-  include:
-    - language: node_js
-      node_js:
-        - "stable"
-      cache:
-        directories:
-          - node_modules
-
-      before_install:
-        - npm install appium
-        - npm install wd
-        - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
-         - appium &
-
-    - language: python
-      cache: pip
+language: android
       
-      python:
-        - "3.7"
+before_install:
+  - npm install appium
+  - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
+  - appium &
 
-      after_script:
-        - cat ./appium_log.txt
+before_script:
+  - node -version
+  - python -V
+
+script:
+  - echo "Run tests"
+  # - python / pytest 
+
+after_script:
+  - cat ./appium_log.txt
