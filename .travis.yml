@@ -5,6 +5,9 @@ before_install:
   - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
   - appium &
 
+install:
+   - pip install -r requirements.txt
+
 before_script:
   - node -version
   - python -V
