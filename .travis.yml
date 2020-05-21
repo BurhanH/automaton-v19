@@ -9,7 +9,14 @@ cache:
 before_install:
   - npm install -g appium
   - npm install wd
+  - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
   - appium &
+
+before_script:
+  - echo "Do someting"
 
 script:
   - npm test
+
+after_script:
+  - cat ./appium_log.txt
