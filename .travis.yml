@@ -1,11 +1,13 @@
+os: linux
+dist: xenial
+
 language: android
-sudo: required
 jdk: oraclejdk8
 
 before_install:
-  - sudo apt-get update
-  - sudo apt-get install nodejs npm
-  - sudo npm install appium
+  - apt-get update
+  - apt-get install nodejs npm
+  - npm install appium
   - "./node_modules/.bin/appium --log-level info > appium_log.txt &"
   - appium &
 
